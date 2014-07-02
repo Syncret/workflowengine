@@ -38,7 +38,6 @@ public class WorkflowServerImpl implements WorkflowServerInterface{
 		try {
 			WorkflowServer ws = WorkflowServer.getInstance();
 			processID = ws.instantiateWorkflow(workflowID);
-			System.out.println(processID+" initiallize complete");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -51,7 +50,6 @@ public class WorkflowServerImpl implements WorkflowServerInterface{
 			WorkflowServer ws = WorkflowServer.getInstance();
 			result = ws.startProcess(processID);
 			System.out.println(processID+" process complete");
-			//servercomment System.out.println("Start Process = " + success);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -59,16 +57,28 @@ public class WorkflowServerImpl implements WorkflowServerInterface{
 	}
 	
 	public Object[] executeWorkflow(int workflowID){
+		/*
+		//processid, log, starttime, endtime, waittime
 		Object[] result=null;
 		try {
 			WorkflowServer ws = WorkflowServer.getInstance();
 			String processID = ws.instantiateWorkflow(workflowID);
-			System.out.println(processID+" initiallize complete");
 			result = ws.startProcess(processID);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		return result;
+		*/
+		long t1=System.currentTimeMillis();
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		long t2=System.currentTimeMillis();
+		Object[] result={"xxx","",t1,t2,0};
+		return result;
+		
 	}
 	
 //	public TimeSeries getCPUSeries(){
